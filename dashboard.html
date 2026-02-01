@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HouseVault - Dashboard</title>
+     <link rel="stylesheet" href="dashboard.css" />
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=account_circle" />
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="top-bar">
+        <div class="logo">
+            <h2>HOUSEVAULT</h2>
+        </div>
+
+        <div class="user-info">
+           <span class="material-symbols-outlined" style="font-size: 30px;">account_circle</span>
+            <span>USER</span>
+        </div>
+    </header>
+
+    <!-- STATS SECTION -->
+    <section class="stats">
+        <div class="stat-card">
+            <h3>Total Records</h3>
+            <p>42 Files Secure</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Family Members</h3>
+            <p>4 Active</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Critical Alerts</h3>
+            <p style="color: red;">1 Expiring Soon</p>
+        </div>
+    </section>
+
+    <!-- MAIN DASHBOARD -->
+    <main class="vault-sections">
+
+        <a href="medical_records.html" style="text-decoration: none;">
+            <article class="vault-card">
+            <span class="icon">🩺</span>
+            <h3>Medical Records</h3>
+        </article>
+        </a>
+
+        <a href="documents.html" style="text-decoration: none;">
+        <article class="vault-card">
+            <span class="icon">⚖️</span>
+            <h3>Documents</h3>
+        </article></a>
+
+        <a href="emergency.html" style="text-decoration: none;">
+        <article class="vault-card">
+            <span class="icon">🚨</span>
+            <h3>Emergency Contacts</h3>
+        </article></a>
+
+        <a href="notes.html" style="text-decoration: none;">
+         <article class="vault-card">
+            <span class="icon">📝</span>
+            <h3>Notes</h3>
+        </article></a>
+
+    </main>
+
+</body>
+</html>

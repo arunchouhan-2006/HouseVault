@@ -1,0 +1,250 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+/* BODY */
+body {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #0b0c0f, #050608);
+  color: #e7d7a3;
+  padding: 30px 50px;
+}
+
+/* TOP BAR */
+.top-bar {
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 215, 130, 0.3);
+}
+
+.home {
+  text-decoration: none;
+  color: #f3e2a2;
+  font-size: 1.7rem;
+  text-align: center;
+}
+
+/* TITLE */
+.page-title {
+  margin: 30px 0;
+}
+
+.page-title h1 {
+  letter-spacing: 2px;
+  font-weight: 500;
+}
+
+/* SEARCH */
+.search-section input {
+  width: 100%;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 215, 130, 0.3);
+  border-radius: 10px;
+  color: #e7d7a3;
+  outline: none;
+  margin-bottom: 40px;
+}
+
+/* TABLE */
+/* .table-wrapper {
+  margin-top: 40px;
+} */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 18px;
+  text-align: left;
+}
+
+thead {
+  border-bottom: 1px solid rgba(255, 215, 130, 0.4);
+}
+
+tbody tr {
+  border-bottom: 1px solid rgba(255, 215, 130, 0.15);
+}
+
+/* STATUS */
+.status {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+/* .valid {
+  background: rgba(80, 200, 120, 0.2);
+  color: #7dffb0;
+}
+
+.expiring {
+  background: rgba(255, 90, 90, 0.2);
+  color: #ff8c8c;
+} */
+
+/* ICON BUTTON */
+.icon-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+
+.icon-btn svg {
+  width: 22px;
+  height: 22px;
+  fill: #e7d7a3;
+  opacity: 0.8;
+}
+
+.icon-btn:hover svg {
+    fill: #f6ce4c;
+  opacity: 1;
+}
+
+.remove-btn:hover {
+  box-shadow:0 0 10px rgba(119, 2, 2, 0.7) ;
+   transform: scale(1.05);
+}
+
+
+/* FLOATING ADD BUTTON */
+.add {
+  position: fixed;
+  z-index: 2;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  font-size: 2rem;
+  
+  color: #050608;
+  background: #f3e2a2;
+  cursor: pointer;
+  box-shadow: 0 0 30px rgba(243, 226, 162, 0.6);
+}
+
+.add:hover {
+  transform: scale(1.05);
+}
+
+                                                               /* ADD POPUP */
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 6, 8, 0.8);
+  backdrop-filter: blur(3px);
+  display: none;                   /* so that initialy it is hidden */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* ADD BOX */
+.popup_box {
+   backdrop-filter: blur(8px);
+  width: 100%;
+  max-width: 520px;
+  padding: 35px;
+  border-radius: 18px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.05),
+    rgba(0, 0, 0, 0.75)
+  );
+  border: 1px solid rgba(255, 215, 130, 0.5);
+  box-shadow:
+    0 0 20px rgba(255, 215, 130, 0.35),
+    inset 0 0 80px rgba(0, 0, 0, 0.7);
+}
+
+/* TITLE */
+.popup_box h2 {
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+/* FORM */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* FIELD */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* INPUTS */
+input,
+select {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 215, 130, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  color: #e7d7a3;
+}
+
+/* ROW */
+.row {
+  display: flex;
+  gap: 15px;
+}
+
+.row .field {
+  flex: 1;
+}
+
+/* UPLOAD */
+.upload input {
+  padding: 30px;
+  border: 2px dashed rgba(255, 215, 130, 0.4);
+  cursor: pointer;
+}
+
+.upload p {
+  font-size: 0.8rem;
+  opacity: 0.6;
+  text-align: center;
+}
+
+/* ACTION BUTTONS */
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.actions button {
+  padding: 12px 22px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+/* CANCEL */
+.cancel {
+  background: transparent;
+  color: #e7d7a3;
+  opacity: 0.7;
+}
+
+/* SAVE */
+.save{
+  background: linear-gradient(135deg, #f3e2a2, #c9a84e);
+  color: #050608;
+  box-shadow: 0 0 20px rgba(243, 226, 162, 0.6);
+}
+

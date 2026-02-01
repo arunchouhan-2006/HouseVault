@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HouseVault – Medical Records</title>
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_back_ios"
+    />
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=add_2" /> -->
+    <link rel="stylesheet" href="vault_card.css" />
+  </head>
+
+  <body>
+    <!-- TOP NAV -->
+    <header class="top-bar">
+      <a href="dashboard.html" class="home"
+        ><span class="material-symbols-outlined">arrow_back_ios</span
+        >HouseVault</a
+      >
+    </header>
+
+    <!-- PAGE TITLE -->
+    <section class="page-title">
+      <h1>MEDICAL RECORDS</h1>
+    </section>
+
+    <!-- SEARCH -->
+    <section class="search-section">
+      <input type="search" placeholder="Search the archives..." />
+    </section>
+
+    <!-- TABLE -->
+    <main class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Date Added</th>
+            <th>File</th>
+            <th>View</th>
+            <!-- <th>Status</th> -->
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody id="medicalTableBody">
+          <!-- <tr>
+            <td>Covid Vaccination – Dad</td>
+            <td>Oct 2024</td>
+             <td><span class="status valid">Valid</span></td> 
+            <td>
+              <button class="icon-btn">
+                 Eye Icon 
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M12 5c-7 0-11 7-11 7s4 7 11 7 11-7 11-7-4-7-11-7zm0 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"
+                  />
+                </svg>
+              </button>
+            </td>
+          </tr> -->
+
+        </tbody>
+      </table>
+    </main>
+
+    <!-- ADD BUTTON -->
+    <button class="add" onclick="openPopup()">+</button>
+
+    <!-- ADD POPUP-->
+    <div id="popup" class="popup">
+      <!-- ADD BOX -->
+      <div class="popup_box">
+        <h2>NEW RECORD ENTRY</h2>
+
+        <form>
+          <!-- TITLE -->
+          <div class="field">
+            <label for="medicalTitle">Title</label>
+            <input type="text" id="medicalTitle" name="medicalTitle" placeholder="Enter record title" />
+          </div>
+
+          <!-- CATEGORY + EXPIRY -->
+          <div class="row">
+            <div class="field">
+              <label for="medicalCategory">Category</label>
+              <select id="medicalCategory" name="medicalCategory">
+                <option value="medical">Medical</option>
+                <option value="documents">Documents</option>
+                <option value="notes">Notes</option>
+                <option value="emergency">Emergency</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="medicalDate" name="medicalDate">Date</label>
+              <input type="date" id="medicalDate" />
+            </div>
+          </div>
+
+          <!-- FILE -->
+          <div class="field upload">
+            <input type="file" id="medicalFile" name="medicalFile" />
+
+            <p>Drop digital assets here</p>
+          </div>
+
+          <!-- ACTIONS -->
+          <div class="actions">
+            <button type="button" class="cancel" onclick="closePopup()">
+              Cancel
+            </button>
+            <button type="button" class="save" onclick="saveRecord()">
+              Encrypt & Save
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      function openPopup() {
+        document.getElementById("popup").style.display = "flex";
+      }
+
+      function closePopup() {
+        document.getElementById("popup").style.display = "none";
+      }
+
+      //   storage
+      let data = JSON.parse(localStorage.getItem("housevaultData"));
+
+      if (!data || !data.notes) {
+        data = {
+          medical: [],
+          documents: [],
+          notes: [],
+          emergency: [],
+        };
+        localStorage.setItem("housevaultData", JSON.stringify(data));
+      }
+
+      function saveRecord() {
+        const title = document.getElementById("medicalTitle").value.trim();
+        const category = document.getElementById("medicalCategory").value;
+        const date = document.getElementById("medicalDate").value;
+        const fileInput = document.getElementById("medicalFile");
+
+        if (title === "" || date === "") {
+          alert("Please fill all fields");
+          return;
+        }
+
+        if (fileInput.files.length === 0) {
+          alert("Please select a file");
+          return;
+        }
+
+        const file = fileInput.files[0];
+
+        const data = JSON.parse(localStorage.getItem("housevaultData"));
+
+        const newRecord = {
+          id: Date.now(),
+          title: title,
+          date: date,
+          fileName: file.name,
+          fileType: file.type,
+        };
+
+        
+
+        if (category === "medical") {
+          data[category].push(newRecord);                                  
+        localStorage.setItem("housevaultData", JSON.stringify(data));
+          addMedicalToTable(newRecord);
+        }
+        else{alert("Enter correct category")}
+
+        closePopup();
+        clearForm();
+      }
+
+      // add doc to table on the screen
+
+      function addMedicalToTable(record) {
+        const tableBody = document.getElementById("medicalTableBody");
+
+        const row = document.createElement("tr");
+        row.setAttribute("data-id", record.id);
+
+        row.innerHTML = `
+    <td>${record.title}</td>
+    <td>${record.date}</td>
+    <td>${record.fileName}</td>
+    <td> <button class="icon-btn">
+        
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 5c-7 0-11 7-11 7s4 7 11 7 11-7 11-7-4-7-11-7zm0 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"
+                  />
+                </svg>
+              </button></td>
+    <td>
+      <button
+        class="icon-btn remove-btn"
+        style="
+          padding: 6px 14px;
+          border-radius: 20px;
+          font-size: 0.85rem;
+          background: rgba(255, 90, 90, 0.2);
+          color: #ff8c8c;
+        "
+        onclick="removeItem(${record.id})"
+      >
+        Remove
+      </button>
+    </td>
+  `;
+
+        tableBody.appendChild(row);
+      }
+
+      //load stored data on screen
+
+      function loadData() {
+        const data = JSON.parse(localStorage.getItem("housevaultData"));
+        if (!data) return; //if data is null or undefined exit the function
+
+        data.medical.forEach(addMedicalToTable); //For each element(every contact) stored in localStorage, add it as a row in the table
+      }
+
+      //other functions
+
+      // function formatDate(dateStr) {
+      //   const date = new Date(dateStr);
+      //   return date.toLocaleString("en-US", {
+      //     date:"numeric",
+      //     month: "short",
+      //     year: "numeric",
+      //   });
+      // }
+
+      function clearForm() {
+        document.getElementById("medicalTitle").value = "";
+        document.getElementById("medicalDate").value = "";
+        document.getElementById("medicalFile").value = "";
+      }
+
+      //REMOVE ITEM
+
+      function removeItem(id) {
+        const data = JSON.parse(localStorage.getItem("housevaultData"));
+        //  Remove from localStorage
+        for (let i = 0; i < data.medical.length; i++) {
+          if (data.medical[i].id === id) {
+            data.medical.splice(i, 1); // delete that note which has that id whose remove btn is clicked(index, no. of elem to be del)
+            break;
+          }
+        }
+        localStorage.setItem("housevaultData", JSON.stringify(data)); //store modifies data
+
+        //  Remove from screen
+        const row = document.querySelector(`tr[data-id="${id}"]`);
+        if (row) {
+          row.remove();
+        }
+      }
+      //to load notes when page is refreshed
+      window.onload = loadData();
+    </script>
+  </body>
+</html>
+<!-- <span class="material-symbols-outlined">add_2</span> -->

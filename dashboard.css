@@ -1,0 +1,165 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+/* BODY */
+body {
+  min-height: 100vh;
+  background:
+    /* radial-gradient(circle at center, rgba(255, 215, 130, 0.08), transparent 60%), */ linear-gradient(
+    to bottom,
+    #0b0c0f,
+    #050608
+  );
+  /* background:
+    radial-gradient(circle at top, rgba(255, 215, 130, 0.08), transparent 60%),
+    linear-gradient(to bottom, #0b0c0f, #050608); */
+  color: #e7d7a3;
+  padding: 30px 50px;
+}
+
+/* HEADER */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow:
+    0 0 30px rgba(255, 215, 130, 0.08),
+    inset 0 0 60px rgba(0, 0, 0, 0.6);
+}
+
+.logo h2 {
+  letter-spacing: 3px;
+  font-weight: 500;
+  color: #f3e2a2;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+/* .user-info .material-symbols-outlined {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 215, 130, 0.5);
+} */
+
+/* STATS SECTION */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin: 40px 0;
+}
+
+.stat-card {
+  padding: 25px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+   box-shadow:
+    0 0 25px rgba(255, 215, 130, 0.1),
+    inset 0 0 40px rgba(0, 0, 0, 0.6); 
+    /* box-shadow:
+    0 0 5px rgb(249, 192, 70),
+    inset 0 0 70px rgba(0, 0, 0, 0.7); */
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+
+}
+
+.stat-card h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  opacity: 0.8;
+  margin-bottom: 10px;
+}
+
+.stat-card p {
+  font-size: 1.2rem;
+  /* color: #f5e8b8; */
+  color: green;
+}
+
+/* MAIN DASHBOARD  */ 
+.vault-sections {
+  padding-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+}
+
+/* VAULT CARDS */
+.vault-card {
+  height: 200px;
+  padding: 35px 25px;
+  border-radius: 16px;
+  text-align: center;
+  cursor: pointer;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.05),
+      rgba(0, 0, 0, 0.6)
+    );
+  /* box-shadow:
+    0 0 30px rgba(230, 164, 23, 0.12),
+    inset 0 0 60px rgba(0, 0, 0, 0.7); */
+    box-shadow:
+    0 0 5px rgb(247, 178, 29),
+    inset 0 0 70px rgba(0, 0, 0, 0.7);
+  transition: all 0.3s ease;
+}
+
+.vault-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 0 25px rgb(247, 178, 29),
+    inset 0 0 70px rgba(0, 0, 0, 0.7);
+}
+
+/* ICON */
+.vault-card .icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 15px;
+}
+
+/* CARD TITLE */
+.vault-card h3{
+  font-size: 1.25rem;
+  letter-spacing: 1.5px;
+  font-weight: 500;
+  color: #f3e2a2;
+}
+
+/*  RESPONSIVE  */
+@media (max-width: 768px) {
+  body {
+    padding: 20px;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  /* .top-bar {
+    flex-direction: column;
+    gap: 15px;
+  } */
+}
